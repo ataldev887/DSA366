@@ -1,17 +1,28 @@
-package backtracking6;
+package lecture31;
 
-public class MergeTwoSortedArray {
+public class Merge_sort {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int []arr1= {3,5,7,9,11};
-		int []arr2= {1,2,3,4,6,7};
-		int []ans = Merge_twosorted_array(arr1, arr2);
-		for(int i=0;i<ans.length;i++) {
+		int []arr = {7,3,2,15,7,1};
+		int []ans = mergesorted(arr,0,arr.length-1);
+		for (int i = 0; i < ans.length; i++) {
 			System.out.print(ans[i]+" ");
 		}
 	}
 	
+	public static int []mergesorted(int []arr,int lo, int hi){
+		if(lo==hi) {
+			int []a= new int [1];
+			a[0]=arr[lo];
+			return a;
+		}
+		int mid = (lo+hi)/2;
+		int []fs= mergesorted(arr,lo,mid);
+		int []ss= mergesorted(arr,mid+1,hi);
+		return Merge_twosorted_array(fs,ss);
+		
+	}
 	public static int [] Merge_twosorted_array(int []arr1,int []arr2) {
 		int n = arr1.length;
 		int m = arr2.length;
@@ -45,5 +56,4 @@ public class MergeTwoSortedArray {
 			}
 		return ans;
 	}
-
 }
