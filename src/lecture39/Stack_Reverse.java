@@ -23,7 +23,18 @@ public class Stack_Reverse {
 		}
 		int x = st.pop();
 		Reverse(st);
-		st.push(x);
+		insert_Down(st,x);
+	}
+	
+	private static void insert_Down(Stack<Integer>st,int x) {
+		if(st.isEmpty()) {
+			st.push(x);
+			return;
+		}
+		int y = st.pop();
+		insert_Down(st,x);
+		st.push(y);
+		
 	}
 
 }
